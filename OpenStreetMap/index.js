@@ -9,7 +9,11 @@ const corsOptions = {
   headers: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://zzz-coral.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 
 const port = 5004;
 app.use(express.json());
