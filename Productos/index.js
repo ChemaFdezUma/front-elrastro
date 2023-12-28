@@ -7,7 +7,7 @@ const app = express();
 const port = 5001;
 app.use(express.json());
 app.use(cors({
-  origin: 'https://zzz-coral.vercel.app',
+  origin: 'http://localhost:3000/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
