@@ -121,7 +121,7 @@ router.get('/productos-por-nombre/:nombre', (req, res) => {
 //Get de productos con parte o el nombre completo de vendedor, comprobado con Postman
 router.get('/productos-usuario/:nombre', (req, res) => {
   const {nombre} = req.params;
-  axios.get('https://el-rastro-six.vercel.app/usuarios/nombre/' + nombre)
+  axios.get('https://mi-repo-ten.vercel.app/usuarios/nombre/' + nombre)
   .then((response) => {
     const {data} = response;
     const {message} = data;
@@ -164,7 +164,7 @@ router.get('/productos-ordenados-por-pujas/:categoria', (req, res) => {
         cantidadPujas: 0
       }
 
-      await axios.get('https://el-rastro-six.vercel.app/pujas/cantidad-pujas/' + data[i]._id)
+      await axios.get('https://mi-repo-ten.vercel.app/pujas/cantidad-pujas/' + data[i]._id)
       .then((response) => {
         const {data} = response;
         const {message} = data;

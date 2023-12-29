@@ -9,7 +9,7 @@ const usuarios = require("../models/usuarios.js");
 // create, comprobado con Postman 
 router.post("/", (req, res) => {
   const user = usuariosSchema(req.body);
-  axios.get('https://el-rastro-six.vercel.app/usuarios/correo/' + user.correo).then((response) => {
+  axios.get('https://mi-repo-ten.vercel.app/usuarios/correo/' + user.correo).then((response) => {
     const { data } = response;
     const { message } = data;
     if (message === "No se ha encontrado ningún usuario con ese correo.") {
@@ -137,7 +137,7 @@ router.get("/direccion/:direccion", (req, res) => {
 //get subastadores de un articulo con indentificador x, comprobado con Postman
 router.get("/compradores/:productoId", (req, res) => {
   const { productoId } = req.params;
-  axios.get('https://el-rastro-six.vercel.app/pujas')
+  axios.get('https://mi-repo-ten.vercel.app/pujas')
   .then((response) => {
     const {data} = response;
     const {message} = data;
@@ -162,13 +162,13 @@ router.get("/distancia/:usuarioID/:distancia", async (req, res) => {
   const { distancia } = req.params;
   const devolver2 = [];
   const { usuarioID } = req.params;
-  await axios.get('https://el-rastro-six.vercel.app/usuarios/' + usuarioID)
+  await axios.get('https://mi-repo-ten.vercel.app/usuarios/' + usuarioID)
     .then((response) => {
       usuariosSchema.find().then(async (todosLosUsuarios) => {
         const datosUsuario = response.data;
         const { calle, numero, codigoPostal, ciudad, provincia, pais } = datosUsuario;
         const direccion = calle + " " + numero + ", " + codigoPostal + ", " + ciudad + ", " + provincia + ", " + pais;
-        await axios.get('https://el-rastro-six.vercel.app/mapa/direccionCoordenadas/' + direccion)
+        await axios.get('https://mi-repo-ten.vercel.app/mapa/direccionCoordenadas/' + direccion)
           .then(async (coordenadas) => {
             const latUsuario = coordenadas.data.lat;
             const lonUsuario = coordenadas.data.lon;
@@ -176,7 +176,7 @@ router.get("/distancia/:usuarioID/:distancia", async (req, res) => {
             for(let i = 0; i < todosLosUsuarios.length; i++){
               const { calle, numero, codigoPostal, ciudad, provincia, pais } = todosLosUsuarios[i];
               const direccion2 = calle + " " + numero + ", " + codigoPostal + ", " + ciudad + ", " + provincia + ", " + pais;
-               await axios.get('https://el-rastro-six.vercel.app/mapa/direccionCoordenadas/' + direccion2)
+               await axios.get('https://mi-repo-ten.vercel.app/mapa/direccionCoordenadas/' + direccion2)
                 .then(async (coord) => {
                   const latUsuario2 = coord.data.lat;
                   const lonUsuario2 = coord.data.lon;
@@ -204,7 +204,7 @@ router.get("/distancia/:usuarioID/:distancia", async (req, res) => {
 //Get de propietario de producto con ID x, devuelve el producto entero y de ahi podemos pillar el vendedor, auxiliar
 router.get('/propietario/:productoId', (req, res) => {
   const { productoId } = req.params;
-  axios.get('https://el-rastro-six.vercel.app/productos/' + productoId)
+  axios.get('https://mi-repo-ten.vercel.app/productos/' + productoId)
     .then((response) => {
       const { data } = response;
       const { message } = data;

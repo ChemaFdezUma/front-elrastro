@@ -10,16 +10,16 @@ async function revisarPujas() {
 
         for (let puja of pujas) {
             // Realiza la solicitud para obtener detalles del producto
-            const response = await axios.get(`https://el-rastro-six.vercel.app/productos/${puja.producto}`);
+            const response = await axios.get(`https://mi-repo-ten.vercel.app/productos/${puja.producto}`);
             const producto = response.data;
 
             // Verifica si la fecha ha terminado
             if (new Date() > new Date(producto.fechaDeCierre)) { 
                 console.log(`La puja con ID ${puja._id} y producto ID ${puja.producto} ha finalizado.`);
-                const comprador = await axios.get(`https://el-rastro-six.vercel.app/usuarios/${puja.comprador}`);
+                const comprador = await axios.get(`https://mi-repo-ten.vercel.app/usuarios/${puja.comprador}`);
                 const correo1 = comprador.data.correo;
                 console.log(correo1);
-                const vendedor = await axios.get(`https://el-rastro-six.vercel.app/usuarios/${producto.vendedor}`);
+                const vendedor = await axios.get(`https://mi-repo-ten.vercel.app/usuarios/${producto.vendedor}`);
                 const correo2 = vendedor.data.correo;
                 console.log(correo2);
                 await enviarCorreo(correo1, "Has ganado una puja! Revisalo aqui: https://el-rastro-nine.vercel.app");

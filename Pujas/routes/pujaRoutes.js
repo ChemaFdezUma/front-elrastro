@@ -135,7 +135,7 @@ router.get("/puja-usuario-producto/:usuarioId/:productoId", (req, res) => {
 router.get("/puja-usuario/:nombre", async (req, res) => {
   try {
     const { nombre } = req.params;
-    const response = await axios.get(`https://el-rastro-six.vercel.app/usuarios/nombre/${nombre}`);
+    const response = await axios.get(`https://mi-repo-ten.vercel.app/usuarios/nombre/${nombre}`);
     const { _id } = response.data[0];
 
     const pujas = await pujasSchema.find({ comprador: new ObjectId(_id) });
@@ -155,7 +155,7 @@ router.get("/puja-usuario/:nombre", async (req, res) => {
 router.get("/puja-producto/:nombre", async (req, res) => {
   const { nombre } = req.params;
   let devolver = [];
-  await axios.get(`https://el-rastro-six.vercel.app/productos/productos-por-nombre/${nombre}`)
+  await axios.get(`https://mi-repo-ten.vercel.app/productos/productos-por-nombre/${nombre}`)
   .then(async (response) => {
     for (let i = 0; i < response.data.length; i++) {
       const { _id } = response.data[i];
