@@ -16,7 +16,6 @@ app.use(cors({
 
 const productoRoutes = require("./routes/productoRoutes.js");
 const productos = require("./models/productos.js");
-const productos = require("./models/productos.js");
 app.use('/productos', productoRoutes);
 mongoose.connect(
   "mongodb+srv://grupoWeb:grupoWeb@cluster0.syetq9a.mongodb.net/elRastro").then(() =>
