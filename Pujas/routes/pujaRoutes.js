@@ -182,4 +182,13 @@ router.get("/puja-producto/:nombre", async (req, res) => {
 
 });
 
+//borrar todas alas pujas d eun producto con id x
+router.delete("/borrar-pujas-producto/:productoId", (req, res) => {
+  const { productoId } = req.params;
+  pujasSchema
+    .deleteMany({ producto: new ObjectId(productoId) })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+});
+
 module.exports = router;
