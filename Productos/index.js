@@ -16,6 +16,7 @@ app.use(cors({
 
 const productoRoutes = require("./routes/productoRoutes.js");
 const productos = require("./models/productos.js");
+const productos = require("./models/productos.js");
 app.use('/productos', productoRoutes);
 mongoose.connect(
   "mongodb+srv://grupoWeb:grupoWeb@cluster0.syetq9a.mongodb.net/elRastro").then(() =>
@@ -30,7 +31,7 @@ setInterval(revisarProductos, intervalo);
 async function revisarProductos() {
   try {
     console.log("Revisando productos...");
-    const productos = await Producto.find({});
+    const productos = await productos.find({});
     for (let producto of productos) {
       if (new Date() > new Date(producto.fechaDeCierre)) {
         console.log(`El producto con ID ${producto._id} ha finalizado.`);
