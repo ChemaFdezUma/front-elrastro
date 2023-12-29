@@ -195,7 +195,6 @@ router.get('/productos-ordenados-por-pujas/:categoria', (req, res) => {
 // inferior al inicial
 router.put("/desertico/:id", (req, res) => {
   const { id } = req.params;
-  const { desertico } = req.body;
   productosSchema
     .findOne({ _id: id })
     .then((data) => {
