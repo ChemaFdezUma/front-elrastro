@@ -30,8 +30,8 @@ setInterval(revisarProductos, intervalo);
 async function revisarProductos() {
   try {
     console.log("Revisando productos...");
-    const productos = await productos.find({});
-    for (let producto of productos) {
+    const productos2 = await productos.find({});
+    for (let producto of productos2) {
       if (new Date() > new Date(producto.fechaDeCierre)) {
         console.log(`El producto con ID ${producto._id} ha finalizado.`);
         const pujas = await axios.get(`https://front-elrastro.vercel.app/pujas/cantidad-pujas/${producto._id}`);
