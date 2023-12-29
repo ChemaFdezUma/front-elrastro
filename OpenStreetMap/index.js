@@ -10,7 +10,7 @@ const corsOptions = {
 };
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://el-rastro-nine.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
