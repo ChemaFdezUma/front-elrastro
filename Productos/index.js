@@ -35,7 +35,6 @@ async function revisarProductos() {
       if (new Date() > new Date(producto.fechaDeCierre)) {
         console.log(`El producto con ID ${producto._id} ha finalizado.`);
         const pujas = await axios.get(`https://front-elrastro.vercel.app/pujas/cantidad-pujas/${producto._id}`);
-        console.log(pujas.data);
         if (pujas.data == 0) {
           console.log(`El producto con ID ${producto._id} no tiene pujas.`);
           await axios.put(`https://front-elrastro.vercel.app/productos/desertico/${producto._id}`).then((response) => {
