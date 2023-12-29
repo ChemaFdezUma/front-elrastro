@@ -202,7 +202,7 @@ router.put("/desertico/:id", (req, res) => {
         console.log(Date.now() + (data.fechaDeCierre - data.fechaDeCreacion))
         console.log(new Date(Date.now() + (data.fechaDeCierre - data.fechaDeCreacion)))
         productosSchema
-        .updateOne({ _id: id }, { $set: { desertico: true, precioInicial: data.precioInicial * 0.9, fechaDeCierre: (new Date(Date.now() + (data.fechaDeCierre - data.fechaDeCreacion))), fechaDeCreacion: new Date() } })
+        .updateOne({ _id: id }, { $set: { desertico: true, precioInicial: (data.precioInicial * 0.9).toFixed(2), fechaDeCierre: (new Date(Date.now() + (data.fechaDeCierre - data.fechaDeCreacion))), fechaDeCreacion: new Date() } })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
       }else{
