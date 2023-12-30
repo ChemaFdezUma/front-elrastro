@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 const port = 5006;
 app.use(express.json());
 app.use(cors({
-  origin: 'https://el-rastro-nine.vercel.app',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));

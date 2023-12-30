@@ -10,10 +10,11 @@ const corsOptions = {
 };
 
 app.use(cors({
-  origin: 'https://el-rastro-nine.vercel.app',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
+
 
 const port = 5004;
 app.use(express.json());
